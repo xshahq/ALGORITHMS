@@ -11,9 +11,7 @@ void findx(int* arr,int length,int x)
         else
         {
             count1 = 1;
-            cout << i << j << endl;
-            ++i;
-            --j;
+            cout << i++ << " " << j-- << endl;
         }
     }
     if(!count1)

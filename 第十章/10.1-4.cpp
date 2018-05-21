@@ -21,8 +21,8 @@ int DEQUEUE(QUEUE& q)
         return -1;
 	int x = arr[q.head];
     if(q.head == N -1)
-        q.head = 0;
+       q.head = 0;
 	else
-    		q.head += 1;
+		q.head += 1;
     return  x;
 }
