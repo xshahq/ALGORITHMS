@@ -4,10 +4,10 @@ void dfs(node* n)
 {
     if(n)
     {
+        cout << n->key << endl;
         node* temp = n->child;
         while(temp)
         {
-            cout << temp->key << endl;
             dfs(temp);
             temp = temp->brother;
         }
@@ -15,6 +15,5 @@ void dfs(node* n)
 }
 void print(binarytree bt)
 {
-    cout << bt.root->key << endl;
     dfs(bt.root);
 }
