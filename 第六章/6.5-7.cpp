@@ -3,7 +3,7 @@ using namespace std;
 void DELECT(int* arr,int j,int& length)
 {
     if(j >= length)
-        cout << "overflow";
+        cout << "errow";
     else
     {
         arr[j] = INT_MIN;
@@ -22,6 +22,6 @@ void DELECT(int* arr,int j,int& length)
         }
         --length;
         if(j < length)
-            swap(arr[j],arr[j + 1]);
+            swap(arr[j],arr[length]);
     }
 }
