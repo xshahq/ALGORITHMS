@@ -1,6 +1,10 @@
 #include<bits/stdc++.h>
 using namespace std;
 int arr[100][100];//Young  yableau
+void init()
+{
+    memset(arr,INT_MAX,sizeof(arr));
+}
 void MIN(int i,int j,int m,int n)
 {
     int r = i + 1,d = j + 1,temp = arr[i][j];
