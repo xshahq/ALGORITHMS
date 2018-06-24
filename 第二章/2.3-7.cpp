@@ -1,3 +1,5 @@
+#include<bits/stdc++.h>
+using namespace std;
 void findx(int* arr,int length,int x)
 {
     sort(arr,arr + length);

@@ -1,3 +1,5 @@
+#include<bits/stdc++.h>
+using namespace std;
 int Merge(int* arr,int l,int mid,int r,int* arr2)
 {
     for(int i = l;i <= r;++i)

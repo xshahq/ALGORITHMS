@@ -1,3 +1,5 @@
+#include<bits/stdc++.h>
+using namespace std;
 int binarysearch(int* arr,int length,int v) // length为数组长度，v为查找的数字
 {
     int l = 0,r = length - 1,mid;
