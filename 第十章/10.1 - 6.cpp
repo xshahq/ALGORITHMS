@@ -1,3 +1,5 @@
+#include<bits/stdc++.h>
+using namespace std;
 struct QUEUE
 {
     vector<int> v1,v2;//这里用vector来表示栈
