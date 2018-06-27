@@ -1,3 +1,5 @@
+#include<bits/stdc++.h>
+using namespace std;
 #define N 100
 int arr[N];
 struct QUEUE
