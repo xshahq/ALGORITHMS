@@ -15,3 +15,15 @@ pair<int,int> PARTITION(int* arr,int l,int r)
     pair<int,int> p(temp,t - 1);
     return p;
 }
+void QUICK_SORT(int* arr,int l,int r)
+{
+    if(l < r)
+    {
+        pair<int,int> nextpos = PARTITION(arr,l,r);
+        int q = nextpos.first;
+        int t = nextpos.second;
+        QUICK_SORT(arr,l,q - 1);
+        QUICK_SORT(arr,t + 1,r);
+
+    }
+}
