@@ -2,6 +2,13 @@
 using namespace std;
 #define N  6    
 void MATRIX_CHAIN_MULTIPLY(int p[N+1], int m[N + 1][N + 1],int s[N+1][N+1])
+{
+    int q = 0;
+    for (int i = 1; i <= N; i++)  m[i][i] = 0;
+
+    for (int l = 2; l <= N; l++)
+	{
+        for (int i = 1; i <= N - l + 1; i++)
         {
             int j = i + l - 1;
             m[i][j] = 999999999;
