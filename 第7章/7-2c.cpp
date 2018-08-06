@@ -24,6 +24,14 @@ void QUICK_SORT(int* arr,int l,int r)
         int t = nextpos.second;
         QUICK_SORT(arr,l,q - 1);
         QUICK_SORT(arr,t + 1,r);
-
     }
+}
+//测试数据
+int main()
+{
+    int arr[10] = {1,0,3,5,5,7,4,3,6,1};
+    QUICK_SORT(arr,0,9);
+    for(int i = 0;i < 10;++i)
+        cout << arr[i];
+    return 0;
 }
