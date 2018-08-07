@@ -15,3 +15,11 @@ pair<int,int> PARTITION(int* arr,int l,int r)
     pair<int,int> p(temp,t - 1);
     return p;
 }
+//测试数据
+int main()
+{
+    int arr[10] = {1,4,3,9,1,1,4,1,2,1};
+    pair<int,int> p = PARTITION(arr,0,9);
+    cout << p.first << p.second;
+    return 0;
+}
