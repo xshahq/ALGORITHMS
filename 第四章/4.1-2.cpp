@@ -14,3 +14,10 @@ int FIND_MAX_SUBARRAY(int* arr,int length)
     }
     return ans;
 }
+//测试数据
+int main()
+{
+    int arr[16] = {13,-3,-25,20,-3,-16,-23,18,20,-7,12,-5,-22,15,-4,7};
+    cout << FIND_MAX_SUBARRAY(arr,16);
+    return 0;
+}

@@ -1,5 +1,4 @@
 #include<bits/stdc++.h>
-#include<windows.h>
 using namespace std;
 const int maxn = 30;
 struct Matrix
