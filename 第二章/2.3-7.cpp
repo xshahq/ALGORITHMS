@@ -17,5 +17,13 @@ void findx(int* arr,int length,int x)
         }
     }
     if(!count1)
-        cout << "can't find";
+        cout << "can't find" << endl;
+}
+int main()
+{
+    int arr1[5] = {1,2,3,4,5};
+    findx(arr1,5,1);
+    findx(arr1,5,4);
+    findx(arr1,5,10);
+    findx(arr1,5,9);
 }
