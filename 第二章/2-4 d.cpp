@@ -1,5 +1,5 @@
-#include<bits/stdc++.h>
 using namespace std;
+#include<bits/stdc++.h>
 int Merge(int* arr,int l,int mid,int r,int* arr2)
 {
     for(int i = l;i <= r;++i)
@@ -8,18 +8,18 @@ int Merge(int* arr,int l,int mid,int r,int* arr2)
     while(i <= mid && j <= r)
     {
         if(arr2[i] < arr2[j])
-            arr[t++] = arr2[i++];
-        else
         {
-            arr[t++] = arr2[j++];
-            ++ans;
+            arr[t++] = arr2[i++];
+            ans += (j - mid - 1);
         }
+        else
+            arr[t++] = arr2[j++];
     }
     if(i <= mid)
         while(t <= r)
             {
                 arr[t++] = arr2[i++];
-                ans = ans + r - mid + 1;
+                ans = ans + r - mid;
             }
     else
         while(t <= r)
@@ -35,5 +35,12 @@ int reverseorderpair(int* arr,int l,int r)
     int* arr2 = new int[r - l + 1];
     int temp3 = Merge(arr,l,mid,r,arr2);
     delete[] arr2;
+    //cout << temp1 << temp2 << temp3;
     return temp1 + temp2 + temp3;
+}
+int main()
+{
+    int arr[5] = {2,3,8,6,1};
+    cout << reverseorderpair(arr,0,4);
+    return 0;
 }
