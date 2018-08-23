@@ -15,3 +15,10 @@ void MAX_HEAP(int* arr,int i,int length)
         i = temp;
     }
 }
+int main()
+{
+    int arr[10] = {3,1,4,6,2,7,9,8,0,5};
+    MAX_HEAP(arr,0,10);
+    cout << arr[0];
+    return 0;
+}

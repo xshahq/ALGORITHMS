@@ -24,3 +24,15 @@ void QUEUE::POP()
         --num;
     }
 }
+int main()
+{
+    QUEUE q;
+    q.PUSH(3);
+    q.PUSH(2);
+    q.PUSH(5);
+    q.POP();
+    q.POP();
+    q.POP();
+    q.POP();
+    return 0;
+}
