@@ -1,14 +1,17 @@
 #include<vector>
 #include<iostream>
 #include<algorithm>
+#include<string>
 #include<list>
 #include<queue>
 using namespace std;
 #define WHITE 0
 #define GREY 1
 #define N 100
+#define GOOD 1
+#define BAD 0
 list<int> arr[N];
-int color[N],d[N],nodeNum,edge;
+int color[N],d[N],nodeNum,edge,property[N];
 void input()
 {
     cin >> nodeNum >> edge;
@@ -29,7 +32,7 @@ void output()
         cout << endl;
     }
 }
-void BFS(int temp)
+int BFS()
 {
     for(int i = 0;i < nodeNum;++i)
     {
@@ -37,9 +40,10 @@ void BFS(int temp)
         color[i] = WHITE;
     }
     queue<int> qe;
-    qe.push(temp);
-    d[temp] = 0;
-    color[temp] = GREY;
+    qe.push(0);
+    d[0] = 0;
+    color[0] = GREY;
+    property[0] = GOOD;
     while(qe.size())
     {
         int num = qe.front();
@@ -51,31 +55,20 @@ void BFS(int temp)
                 qe.push(n);
                 d[n] = d[num] + 1;
                 color[n] = GREY;
+                property[n] = property[num] == GOOD ? BAD : GOOD;
             }
+            else
+                if(property[n] == property[num])
+                    return 0;//0表示无法进行划分
         }
         qe.pop();
     }
-}
-int diameter()
-{
-    int max1 = INT_MIN,count1;
-    BFS(0);
-    for(int i = 0;i < nodeNum;++i)
-        if(max1 < d[i])
-        {
-            max1 = d[i];
-            count1 = i;
-        }
-    BFS(count1);
-    max1 = INT_MIN;
-    for(int i = 0;i < nodeNum;++i)
-        max1 = max(max1,d[i]);
-    return max1;
+    return 1;//1代表可以这样划分
 }
 int main()
 {
     input();
     //output();
-    cout << diameter();
+    cout << BFS();
     return 0;
 }
