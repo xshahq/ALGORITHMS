@@ -12,8 +12,8 @@ using namespace std;
 #define GREY 2
 #define N 100
 list<int> arr[N];
-int color[N],nodeNum,edge,time = 0,d[N],f[N];
-void DFStravel(int);
+int color[N],nodeNum,edge;
+int DFStravel(int);
 void input()
 {
     cin >> nodeNum >> edge;
@@ -34,39 +34,39 @@ void output()
         cout << endl;
     }
 }
-void DFS()
+int DFS()
 {
     for(int i = 0;i < nodeNum;++i)
         color[i] = WHITE;
     for(int i = 0;i < nodeNum;++i)
-        if(color[i] == WHITE)
-            DFStravel(i);
+    {
+        for(int j = 0;j < nodeNum;++j)
+            color[j] = WHITE;
+        if(!DFStravel(i))
+            return 0;
+    }
+    return 1;
 }
-void DFStravel(int num)
+int DFStravel(int num)
 {
-    d[num] = time++;
     color[num] = GREY;
     for(auto pos = arr[num].begin();pos != arr[num].end();++pos)
     {
         int temp = *pos;
         if(color[temp] == WHITE)
         {
-            printf("(%d,%d) is tree edge\n",num,temp);
-            DFStravel(temp);
+            if(!DFStravel(temp))
+                return 0;
         }
-        else if(color[temp] == GREY)
-            printf("(%d,%d) is backward edge\n",num,temp);
         else if(color[temp] == BLACK)
-            f[temp] < d[num] ? printf("(%d,%d) is lateral edge\n",num,temp) : printf("(%d,%d) is foward edge\n",num,temp);
+            return 0;
     }
     color[num] = BLACK;
-    f[num] = time++;
+    return 1;
 }
 int main()
 {
     input();
-    DFS();
-    for(int i = 0;i < nodeNum;++i)
-        cout << d[i] << " " << f[i] << endl;
+    DFS() ? cout << "it's a single connect graph" << endl : cout << " it's not a single graph" << endl;
     return 0;
 }
