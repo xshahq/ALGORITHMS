@@ -46,57 +46,50 @@ void output()
 class minEdge//定义一个类表示每个节点的到最小生成树的权重的最小值
 {
 public:
-    int index;
-    int t;
+    int beg,en,weight;
+    minEdge(int b,int e,int w):beg(b),en(e),weight(w){}
 };
 struct cmp
 {
-    int operator()(minEdge* a,minEdge* b)
+    int operator()(minEdge& a,minEdge& b)
     {
-        return (a-> t) > (b-> t);
+        return (a.weight) > (b.weight);
     }
 };
 int tree[N];//存放最小生成树的节点
 void Prim()
 {
-    minEdge nodeArr[N];
-    for(int i = 0;i < nodeNum;++i)
-    {
-        nodeArr[i].t = INT_MAX;
-        nodeArr[i].index = i;
-    }
-    int isTraveled[N];
-    memset(isTraveled,0,sizeof(isTraveled));
-    isTraveled[0] = 1;
-    priority_queue<minEdge*,vector<minEdge*>,cmp> pq;
-    node* temp = arr[0];
+    priority_queue<minEdge,vector<minEdge>,cmp> pq;
     tree[0] = 0;
+    int visited[N];
+    memset(visited,0,sizeof(visited));
+    visited[0] = 1;
+    node* temp = arr[0];
+    int count1 = 1;
     while(temp)
     {
-        if(!isTraveled[temp ->data])
-            nodeArr[temp ->data].t = temp ->weight;
-        temp = temp ->next;
+        minEdge me = minEdge(0,temp->data,temp->weight);
+        pq.push(me);
+        temp = temp->next;
     }
-    for(int i = 1;i < nodeNum;++i)
-        pq.push(nodeArr + i);
-    int count1 = 1;
     while(pq.size())
     {
-        minEdge* top = pq.top();
-        int i = top ->index;
-        tree[count1++] = i;
-        isTraveled[i] = 1;
-        temp = arr[i];
+        minEdge top = pq.top();
+        if(visited[top.en])
+        {
+            pq.pop();
+            top = pq.top();
+            continue;
+        }
+        tree[count1] = top.en;
+        visited[top.en] = 1;
+        temp = arr[tree[count1++]];
         while(temp)
         {
-            if(!isTraveled[temp ->data])
-                nodeArr[temp ->data].t = min(nodeArr[temp ->data].t,temp ->weight);
-            temp = temp ->next;
+            minEdge me = minEdge(0,temp->data,temp->weight);
+            pq.push(me);
+            temp = temp->next;
         }
-        pq = priority_queue<minEdge*,vector<minEdge*>,cmp>();
-        for(int i = 0;i < nodeNum;++i)
-            if(!isTraveled[i])
-                pq.push(nodeArr + i);
     }
 }
 int main()
@@ -105,5 +98,5 @@ int main()
     Prim();
     for(int i = 0;i < nodeNum;++i)
         cout << tree[i] << endl;
- 	return 0;;
+ 	return 0;
 }
